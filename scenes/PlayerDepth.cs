@@ -64,7 +64,7 @@ public class PlayerDepth : KinematicBody
 			moveVector -= camera.GlobalTransform.basis.y;
 		moveVector.Normalized();
 
-		if(Input.IsActionPressed("ui_accept"))
+		if(Input.IsActionPressed("ui_accept") && harpoon.canShoot)
 		{
 			harpoon.shoot();
 		}
