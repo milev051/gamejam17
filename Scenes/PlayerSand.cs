@@ -15,6 +15,7 @@ public class PlayerSand : KinematicBody
 	float health;
 	Vector3 moveVector;
 	Camera camera;
+	AudioStreamPlayer audioPlayer;
 	public Player_UI playerUI;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -32,6 +33,7 @@ public class PlayerSand : KinematicBody
 		}
 		GD.Print("PLAYER_UI FOUND");
 		camera = GetNode<Camera>("Camera");
+		audioPlayer = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 	}
 
@@ -73,6 +75,12 @@ public class PlayerSand : KinematicBody
 		if(Input.IsActionPressed("down"))
 			moveVector -= camera.GlobalTransform.basis.y;
 		moveVector.Normalized();
+
+		if(moveVector != new Vector3(0.0f, 0.0f, 0.0f) && !audioPlayer.Playing)
+			audioPlayer.Play();
+		
+		if(moveVector == new Vector3(0.0f, 0.0f, 0.0f) && audioPlayer.Playing)
+			audioPlayer.Stop();
 
 		MoveAndSlide(moveVector*speed);
 	}
