@@ -1,0 +1,133 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/CollectedWaterBar.png" type="Texture" id=1]
+[ext_resource path="res://Assets/HealthBar.png" type="Texture" id=2]
+[ext_resource path="res://Assets/OxygenBar.png" type="Texture" id=3]
+
+[sub_resource type="CSharpScript" id=1]
+script/source = "using Godot;
+using System;
+
+public class Player_UI : CanvasLayer
+{
+    // Declare member variables here. Examples:
+    // private int a = 2;
+    // private string b = \"text\";
+    public TextureProgress healthBar;
+    public TextureProgress oxygenBar;
+    public TextureProgress collectedWaterBar;
+    int maximumBarLimit = 900;
+    bool isAlive = true;
+    bool inWater = false;
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
+    {
+        healthBar = GetNode<Control>(\"Control\").GetNode<TextureProgress>(\"HealthBar\");
+        oxygenBar = GetNode<Control>(\"Control\").GetNode<TextureProgress>(\"OxygenBar\");
+        collectedWaterBar = GetNode<Control>(\"Control\").GetNode<TextureProgress>(\"CollectedWaterBar\");
+    }
+
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Process(float delta)
+    {
+        if (isAlive && !inWater)
+            oxygenBar.Value += 2;
+
+        if(healthBar.Value > 0)
+            oxygenBar.Value = oxygenBar.Value + 2;
+
+        if (Input.IsActionPressed(\"ui_up\"))
+        {
+            UpdateOxygenBar(10);
+        }
+        if (Input.IsActionPressed(\"ui_down\"))
+        {
+            UpdateOxygenBar(-10);
+        }
+    }
+
+    public void UpdateHealthBar(int value)
+    {
+        // Player cannot get any health if is dead or has maximum health
+        if (0 < healthBar.Value && healthBar.Value <= maximumBarLimit)
+            healthBar.Value = healthBar.Value + value;
+
+        // Player cannot have more than 100 Health
+        else if (healthBar.Value > maximumBarLimit)
+            healthBar.Value = maximumBarLimit;
+
+        // Check if game is over
+        if (healthBar.Value <= 0)
+             isAlive = false;
+    }
+
+    public void UpdateOxygenBar(int value)
+    {
+        // Player cannot get any health if is dead or has maximum
+        if (0 < oxygenBar.Value && oxygenBar.Value <= maximumBarLimit)
+            oxygenBar.Value = oxygenBar.Value + value;
+
+        // Player cannot have more than maximum
+        else if (oxygenBar.Value > maximumBarLimit)
+            oxygenBar.Value = maximumBarLimit;
+
+        // If there is no any oxygen decrease health
+        if (oxygenBar.Value <= 0)
+            UpdateHealthBar(value);
+    }
+
+    public void UpdateCollectedWaterBar(int value)
+    {
+        // Player cannot get any health if is dead or has maximum
+        if (0 < collectedWaterBar.Value && collectedWaterBar.Value <= maximumBarLimit)
+            collectedWaterBar.Value = collectedWaterBar.Value + value;
+
+        // Player cannot have more than maximum
+        else if (collectedWaterBar.Value > maximumBarLimit)
+            collectedWaterBar.Value = maximumBarLimit;
+    }
+}
+"
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player_UI" type="CanvasLayer" parent="."]
+script = SubResource( 1 )
+
+[node name="Control" type="Control" parent="Player_UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="CollectedWaterBar" type="TextureProgress" parent="Player_UI/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -24.0
+margin_bottom = 400.0
+rect_scale = Vector2( 0.3, 0.3 )
+max_value = 1000.0
+value = 900.0
+texture_progress = ExtResource( 1 )
+fill_mode = 5
+
+[node name="OxygenBar" type="TextureProgress" parent="Player_UI/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -24.0
+margin_bottom = 400.0
+rect_scale = Vector2( 0.3, 0.3 )
+max_value = 1000.0
+value = 900.0
+texture_progress = ExtResource( 3 )
+fill_mode = 5
+radial_initial_angle = 180.0
+
+[node name="HealthBar" type="TextureProgress" parent="Player_UI/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -24.0
+margin_bottom = 400.0
+rect_scale = Vector2( 0.3, 0.3 )
+max_value = 1000.0
+value = 900.0
+texture_progress = ExtResource( 2 )
+fill_mode = 5
