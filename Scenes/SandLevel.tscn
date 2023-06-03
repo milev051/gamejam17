@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://addons/zylann.hterrain/hterrain.gd" type="Script" id=1]
 [ext_resource path="res://addons/zylann.hterrain/hterrain_texture_set.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Assets/sky.jpg" type="Texture" id=6]
 [ext_resource path="res://Scenes/PlayerSand.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Plant.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/WaterWell.tscn" type="PackedScene" id=9]
 
 [sub_resource type="PanoramaSky" id=2]
 panorama = ExtResource( 6 )
@@ -58,3 +59,6 @@ mouseSens = 1.0
 
 [node name="Plant" parent="." instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 77.9117, 1.4088, 116.383 )
+
+[node name="WaterWell" parent="." instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 84.1152, 1.64785, 113.029 )
