@@ -6,25 +6,28 @@ public class Player_UI : CanvasLayer
     // Declare member variables here. Examples:
     // private int a = 2;
     // private string b = "text";
-    public TextureProgress HealthBar;
-    public TextureProgress OxygenBar;
-    public TextureProgress CollectedWaterBar;
-    int MaximumBarLimit = 1000;
+    public TextureProgress healthBar;
+    public TextureProgress oxygenBar;
+    public TextureProgress collectedWaterBar;
+    int maximumBarLimit = 1000;
+    bool isAlive = true;
+    bool inWater = false;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        HealthBar = GetNode<Control>("Control").GetNode<TextureProgress>("HealthBar");
-        OxygenBar = GetNode<Control>("Control").GetNode<TextureProgress>("OxygenBar");
-        CollectedWaterBar = GetNode<Control>("Control").GetNode<TextureProgress>("CollectedWaterBar");
+        healthBar = GetNode<Control>("Control").GetNode<TextureProgress>("HealthBar");
+        oxygenBar = GetNode<Control>("Control").GetNode<TextureProgress>("OxygenBar");
+        collectedWaterBar = GetNode<Control>("Control").GetNode<TextureProgress>("CollectedWaterBar");
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(float delta)
     {
-        // Ako je na kopnu
-        // If (nije u vodi i nije mrtav)
-        if(HealthBar.Value > 0)
-            OxygenBar.Value = OxygenBar.Value + 2;
+        if (isAlive && !inWater)
+            oxygenBar += 2;
+
+        if(healthBar.Value > 0)
+            oxygenBar.Value = oxygenBar.Value + 2;
 
         if (Input.IsActionPressed("ui_up"))
         {
@@ -39,41 +42,41 @@ public class Player_UI : CanvasLayer
     public void UpdateHealthBar(int value)
     {
         // Player cannot get any health if is dead or has maximum health
-        if (0 < HealthBar.Value && HealthBar.Value <= MaximumBarLimit)
-            HealthBar.Value = HealthBar.Value + value;
+        if (0 < healthBar.Value && healthBar.Value <= maximumBarLimit)
+            healthBar.Value = healthBar.Value + value;
 
         // Player cannot have more than 100 Health
-        else if (HealthBar.Value > MaximumBarLimit)
-            HealthBar.Value = MaximumBarLimit;
+        else if (healthBar.Value > maximumBarLimit)
+            healthBar.Value = maximumBarLimit;
 
         // Check if game is over
-        // if (HealthBar.Value <= 0)
-        //     Game over
+        if (HealthBar.Value <= 0)
+             isAlive = false;
     }
 
     public void UpdateOxygenBar(int value)
     {
-        // Player cannot get any health if is dead or has maximum health
-        if (0 < OxygenBar.Value && OxygenBar.Value <= MaximumBarLimit)
-            OxygenBar.Value = OxygenBar.Value + value;
+        // Player cannot get any health if is dead or has maximum
+        if (0 < oxygenBar.Value && oxygenBar.Value <= maximumBarLimit)
+            oxygenBar.Value = oxygenBar.Value + value;
 
-        // Player cannot have more than 100 Health
-        else if (OxygenBar.Value > MaximumBarLimit)
-            OxygenBar.Value = MaximumBarLimit;
+        // Player cannot have more than maximum
+        else if (oxygenBar.Value > maximumBarLimit)
+            oxygenBar.Value = maximumBarLimit;
 
         // If there is no any oxygen decrease health
-        if (OxygenBar.Value <= 0)
+        if (oxygenBar.Value <= 0)
             UpdateHealthBar(value);
     }
 
     public void UpdateCollectedWaterBar(int value)
     {
-        // Player cannot get any health if is dead or has maximum health
-        if (0 < CollectedWaterBar.Value && CollectedWaterBar.Value <= MaximumBarLimit)
-            CollectedWaterBar.Value = CollectedWaterBar.Value + value;
+        // Player cannot get any health if is dead or has maximum
+        if (0 < collectedWaterBar.Value && collectedWaterBar.Value <= maximumBarLimit)
+            collectedWaterBar.Value = collectedWaterBar.Value + value;
 
-        // Player cannot have more than 100 Health
-        else if (CollectedWaterBar.Value > MaximumBarLimit)
-            CollectedWaterBar.Value = MaximumBarLimit;
+        // Player cannot have more than maximum
+        else if (collectedWaterBar.Value > maximumBarLimit)
+            collectedWaterBar.Value = maximumBarLimit;
     }
 }

@@ -25,23 +25,6 @@ public class PlayerDepth : KinematicBody
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 	}
 
-<<<<<<< HEAD:Scripts/PlayerDepth.cs
-    public override void _Input(InputEvent @event)
-    {
-        if(@event is InputEventMouseMotion mouseMotion)
-        {
-            camera.RotateX(Mathf.Deg2Rad(mouseMotion.Relative.y*mouseSens*-1));
-            camera.RotationDegrees = new Vector3(Mathf.Clamp(camera.RotationDegrees.x, -75.0f, 75.0f), 0.0f, 0.0f);
-            this.RotateY(Mathf.Deg2Rad(mouseMotion.Relative.x*mouseSens*-1));
-        }
-    }
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(float delta)
-    {
-        if(Input.IsActionPressed("ui_cancel"))
-            GetTree().Quit();
-    }
-=======
 	public override void _Input(InputEvent @event)
 	{
 		if(@event is InputEventMouseMotion mouseMotion)
@@ -57,7 +40,6 @@ public class PlayerDepth : KinematicBody
 		if(Input.IsActionPressed("ui_cancel"))
 			GetTree().Quit();
 	}
->>>>>>> d15d438752879afee71e905a136dbf49b1cc1b76:scenes/PlayerDepth.cs
 
 	public override void _PhysicsProcess(float delta)
 	{
