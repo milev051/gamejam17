@@ -8,11 +8,27 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "ResourceFormatLoader",
+"class": "HTerrainDataLoader",
+"language": "GDScript",
+"path": "res://addons/zylann.hterrain/hterrain_resource_loader.gd"
+}, {
+"base": "ResourceFormatSaver",
+"class": "HTerrainDataSaver",
+"language": "GDScript",
+"path": "res://addons/zylann.hterrain/hterrain_resource_saver.gd"
+} ]
+_global_script_class_icons={
+"HTerrainDataLoader": "",
+"HTerrainDataSaver": ""
+}
+
 [application]
 
 config/name="20230603 095434"
 run/main_scene="res://Scenes/SandLevel.tscn"
-config/icon="res://icon.png"
+config/icon="res://Sprites/icon.png"
 
 [gui]
 

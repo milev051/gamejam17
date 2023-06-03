@@ -1,0 +1,46 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+<<<<<<< HEAD:Sprites/icon.png.import
+path="res://.import/icon.png-f9ba9008f31679cd240e2c5f33a9a4fb.stex"
+=======
+path.s3tc="res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.s3tc.stex"
+path.etc2="res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.etc2.stex"
+>>>>>>> d15d438752879afee71e905a136dbf49b1cc1b76:icon.png.import
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
+
+[deps]
+
+<<<<<<< HEAD:Sprites/icon.png.import
+source_file="res://Sprites/icon.png"
+dest_files=[ "res://.import/icon.png-f9ba9008f31679cd240e2c5f33a9a4fb.stex" ]
+=======
+source_file="res://icon.png"
+dest_files=[ "res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.s3tc.stex", "res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.etc2.stex" ]
+>>>>>>> d15d438752879afee71e905a136dbf49b1cc1b76:icon.png.import
+
+[params]
+
+compress/mode=2
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=true
+flags/filter=true
+flags/mipmaps=true
+flags/anisotropic=false
+flags/srgb=1
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+process/normal_map_invert_y=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0
