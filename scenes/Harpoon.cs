@@ -34,7 +34,6 @@ public class Harpoon : Spatial
         if(raycast.IsColliding() && ((Node)raycast.GetCollider()).IsInGroup("enemies"))
         {
             Enemy enemy = (Enemy)raycast.GetCollider();
-            GD.Print(enemy);
             timer.Start();
             enemy.damage();
         }
