@@ -62,12 +62,4 @@ public class PlayerSand : KinematicBody
 
 		MoveAndSlide(moveVector*speed);
 	}
-
-	/*public void damage(float damage)
-	{
-		health -= damage;
-		animPlayer.Play("damage");
-		if(health < 0.0f)
-			GetTree().ReloadCurrentScene();
-	}*/
 }

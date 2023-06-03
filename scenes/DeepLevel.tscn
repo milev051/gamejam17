@@ -18,7 +18,14 @@ fog_height_max = 40.0
 [node name="DeepLevel" type="Spatial"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+<<<<<<< HEAD
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.3919, 133.304, 0 )
+=======
+<<<<<<< HEAD
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5134, 0 )
+=======
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.77412, 0 )
+>>>>>>> 03a427dada8ffc4cad47652e9e198a30ad28b945
 speed = 20.0
 mouseSens = 0.1
 
@@ -29,6 +36,7 @@ environment = SubResource( 2 )
 transform = Transform( 6, 0, 0, 0, 6, 0, 0, 0, 1, -1.24216, 133.615, 37.3013 )
 
 [node name="Spatial" parent="." instance=ExtResource( 3 )]
+<<<<<<< HEAD
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 141.89, 0 )
 
 [node name="Spatial2" parent="." instance=ExtResource( 4 )]
@@ -45,3 +53,6 @@ transform = Transform( -4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -
 
 [node name="Spatial5" parent="." instance=ExtResource( 4 )]
 transform = Transform( -4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 94.0497, 55.4512, 0.0551376 )
+=======
+>>>>>>> d15d438752879afee71e905a136dbf49b1cc1b76
+>>>>>>> 03a427dada8ffc4cad47652e9e198a30ad28b945

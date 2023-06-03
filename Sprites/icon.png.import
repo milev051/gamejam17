@@ -2,8 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
+<<<<<<< HEAD:Sprites/icon.png.import
+path="res://.import/icon.png-f9ba9008f31679cd240e2c5f33a9a4fb.stex"
+=======
 path.s3tc="res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.s3tc.stex"
 path.etc2="res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.etc2.stex"
+>>>>>>> d15d438752879afee71e905a136dbf49b1cc1b76:icon.png.import
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +15,13 @@ metadata={
 
 [deps]
 
+<<<<<<< HEAD:Sprites/icon.png.import
+source_file="res://Sprites/icon.png"
+dest_files=[ "res://.import/icon.png-f9ba9008f31679cd240e2c5f33a9a4fb.stex" ]
+=======
 source_file="res://icon.png"
 dest_files=[ "res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.s3tc.stex", "res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.etc2.stex" ]
+>>>>>>> d15d438752879afee71e905a136dbf49b1cc1b76:icon.png.import
 
 [params]
 
