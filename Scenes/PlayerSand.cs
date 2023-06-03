@@ -25,8 +25,6 @@ public class PlayerSand : KinematicBody
 			playerUI.healthBar.Value = stats.health;
 			playerUI.oxygenBar.Value = stats.oxygenLvl;
 			playerUI.collectedWaterBar.Value = stats.waterQt;
-			
-			player
 
 			GD.Print($"Water: {playerUI.collectedWaterBar.Value}");
 			GD.Print($"HP: {playerUI.healthBar.Value}");
