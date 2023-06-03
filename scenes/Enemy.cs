@@ -10,6 +10,7 @@ public class Enemy : KinematicBody
     float speed;
     float health;
     bool hit;
+    bool isAlive = true;
     PlayerDepth player;
     Sprite3D sprite;
     AnimationPlayer animPlayer;
@@ -38,20 +39,20 @@ public class Enemy : KinematicBody
         LookAt(player.Translation, new Vector3(0.0f, 1.0f, 1.0f));
         moveVector = (player.Translation - GlobalTransform.origin).Normalized();
         float distance = moveVector.DistanceTo(player.Translation);
-        if(distance < 20.0f && distance > 10.0f)
+        if (distance < 20.0f && distance > 10.0f)
         {
             sprite.Modulate = new Color(1.0f, 1.0f, 1.0f, 0.3f);
             Visible = true;
         }
-        if(distance < 10.0f)
+        if (distance < 10.0f)
             sprite.Modulate = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
-        MoveAndSlide(moveVector*speed);
+        MoveAndSlide(moveVector * speed);
     }
 
     public void _on_Area_body_entered(Node body)
     {
-        if(body.GetType() == typeof(PlayerDepth))
+        if (body.GetType() == typeof(PlayerDepth))
         {
             PlayerDepth bodyPlayer = (PlayerDepth)body;
             bodyPlayer.damage(10.0f);
@@ -60,18 +61,22 @@ public class Enemy : KinematicBody
 
     public void damage()
     {
-        if(!hit)
+        if (isAlive)
         {
-            health -= 5.0f;
-            hit = true;
-            animPlayer.Play("damage");
-            timer.Start();
-        }
-        speed = 0.0f;
-        if(health <= 0.0)
-        {
-            hit = true;
-            animPlayer.Play("death");
+            if (!hit)
+            {
+                health -= 5.0f;
+                hit = true;
+                animPlayer.Play("damage");
+                timer.Start();
+            }
+            speed = 0.0f;
+            if (health <= 0.0)
+            {
+                isAlive = false;
+                hit = true;
+                animPlayer.Play("death");
+            }
         }
     }
 
@@ -83,7 +88,7 @@ public class Enemy : KinematicBody
 
     public void _on_AnimationPlayer_animation_finished(String animName)
     {
-        if(animName == "death")
+        if (animName == "death")
             QueueFree();
     }
 }
