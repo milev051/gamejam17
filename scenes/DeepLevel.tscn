@@ -1,14 +1,35 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/PlayerDepth.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Water.tscn" type="PackedScene" id=3]
 
-[sub_resource type="PlaneMesh" id=1]
-size = Vector2( 50, 50 )
+[sub_resource type="Environment" id=2]
+ambient_light_color = Color( 0.121569, 0.239216, 0.152941, 1 )
+fog_enabled = true
+fog_color = Color( 0.0627451, 0.0823529, 0.152941, 1 )
+fog_sun_color = Color( 0.968627, 0.968627, 0.968627, 1 )
+fog_depth_begin = 20.0
+fog_depth_end = 40.0
+fog_height_enabled = true
+fog_height_min = 20.0
+fog_height_max = 40.0
 
-[node name="Spatial" type="Spatial"]
-
-[node name="MeshInstance" type="MeshInstance" parent="."]
-mesh = SubResource( 1 )
+[node name="DeepLevel" type="Spatial"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+<<<<<<< HEAD
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5134, 0 )
+=======
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.77412, 0 )
+speed = 20.0
+mouseSens = 0.1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
+
+[node name="Enemy" parent="." instance=ExtResource( 2 )]
+transform = Transform( 6, 0, 0, 0, 6, 0, 0, 0, 1, 15.4994, -30.5336, 0 )
+
+[node name="Spatial" parent="." instance=ExtResource( 3 )]
+>>>>>>> d15d438752879afee71e905a136dbf49b1cc1b76
