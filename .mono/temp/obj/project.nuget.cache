@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "0qDwmvq/Qi4PsNFJvmNe78nG0wSV8IKhtM3FBoJXPlk3uPSj1j1yy/5oNn+K9fSKouIbSc69NcAa7d54O4seJw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\vuk\\Desktop\\GameJam17\\20230603 095434.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\vuk\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.3\\microsoft.netframework.referenceassemblies.1.0.3.nupkg.sha512",
+    "C:\\Users\\vuk\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net472\\1.0.3\\microsoft.netframework.referenceassemblies.net472.1.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
