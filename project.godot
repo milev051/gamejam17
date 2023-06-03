@@ -30,6 +30,14 @@ config/name="20230603 095434"
 run/main_scene="res://Scenes/SandLevel.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=400
+window/size/height=220
+window/size/test_width=1024
+window/size/test_height=600
+window/stretch/mode="viewport"
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true

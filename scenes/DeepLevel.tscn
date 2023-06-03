@@ -23,7 +23,7 @@ fog_height_max = 70.0
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5047, 71.0966, 10.084 )
 speed = 20.0
-mouseSens = 0.1
+mouseSens = 0.3
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 2 )
