@@ -25,7 +25,7 @@ public class WaterWell : Area
 				stats.health = (int)playerSand.playerUI.healthBar.Value;
 				stats.waterQt = (int)playerSand.playerUI.collectedWaterBar.Value; 
 			}
-			PackedScene nextLvl = (PackedScene)ResourceLoader.Load("res://Scenes/DeepLevel.tscn");
+			PackedScene nextLvl = (PackedScene)ResourceLoader.Load("res://scenes/DeepLevel.tscn");
 			GetTree().ChangeSceneTo(nextLvl);
 		}
 	}

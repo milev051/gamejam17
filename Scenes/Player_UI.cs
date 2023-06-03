@@ -23,11 +23,11 @@ public class Player_UI : CanvasLayer
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(float delta)
 	{
-		if (isAlive && !inWater)
-			oxygenBar.Value += 2;
+		// if (isAlive && !inWater)
+		// 	oxygenBar.Value += 2;
 
-		if(healthBar.Value > 0)
-			oxygenBar.Value = oxygenBar.Value + 2;
+		// if(healthBar.Value > 0)
+		// 	oxygenBar.Value = oxygenBar.Value + 2;
 	}
 
 	public void UpdateHealthBar(int value)

@@ -89,6 +89,10 @@ public class Enemy : KinematicBody
 	public void _on_AnimationPlayer_animation_finished(String animName)
 	{
 		if (animName == "death")
+		{
+			PlayerDepth bodyPlayer = GetParent().GetNode<PlayerDepth>("Player");
+			bodyPlayer.playerUI.UpdateCollectedWaterBar(100);
 			QueueFree();
+		}
 	}
 }

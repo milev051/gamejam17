@@ -10,18 +10,31 @@ public class PlayerDepth : KinematicBody
 	float speed;
 	[Export]
 	float mouseSens;
-	float health;
+	[Export]
+	public Resource playerStats;
 	Vector3 moveVector;
 	Camera camera;
 	Harpoon harpoon;
 	AnimationPlayer animPlayer;
+	public Player_UI playerUI;
+	PackedScene nextLvl;
+	Timer timer;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		playerUI = GetNode<Player_UI>("Player_UI");
+		nextLvl = (PackedScene)ResourceLoader.Load("res://Scenes/SandLevel.tscn");
 		camera = GetNode<Camera>("Camera");
 		harpoon = camera.GetNode<Harpoon>("Harpoon");
 		animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
-		health = 100.0f;
+		timer = GetNode<Timer>("Timer");
+		timer.Start();
+		if (playerStats is PlayerStats stats) 
+		{
+			playerUI.healthBar.Value = stats.health;
+			playerUI.collectedWaterBar.Value = stats.waterQt;
+		}
+		playerUI.oxygenBar.Value = 1000;
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 	}
 
@@ -37,6 +50,20 @@ public class PlayerDepth : KinematicBody
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(float delta)
 	{
+		if (playerUI.oxygenBar.Value <= 0.0f) 
+		{
+			playerUI.oxygenBar.Value = 1000;
+			playerUI.healthBar.Value = 1000;
+			if (playerStats is PlayerStats stats)
+			{
+				stats.health = (int)playerUI.healthBar.Value;
+				stats.oxygenLvl = (int)playerUI.oxygenBar.Value;
+				stats.waterQt = (int)playerUI.collectedWaterBar.Value;
+			}
+			GetTree().ChangeSceneTo(nextLvl);
+		}
+			
+		//JEBITE SE SVI U PICKU MATERINU
 		if(Input.IsActionPressed("ui_cancel"))
 			GetTree().Quit();
 	}
@@ -74,9 +101,16 @@ public class PlayerDepth : KinematicBody
 
 	public void damage(float damage)
 	{
-		health -= damage;
+		playerUI.UpdateHealthBar(-100);
 		animPlayer.Play("damage");
-		if(health < 0.0f)
+		if(playerUI.healthBar.Value <= 0.0f)
 			GetTree().ReloadCurrentScene();
+	}
+
+	public void _on_Timer_timeout()
+	{
+		playerUI.UpdateOxygenBar(-10);
+		GD.Print(playerUI.oxygenBar.Value);
+		timer.Start();
 	}
 }

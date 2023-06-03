@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/tacka.png-52f1739255bd9ca896385e933252316a.s3tc.stex"
-path.etc2="res://.import/tacka.png-52f1739255bd9ca896385e933252316a.etc2.stex"
+path.s3tc="res://.import/tacka.png-7907f40704ab6e66e618f7fbcc990d95.s3tc.stex"
+path.etc2="res://.import/tacka.png-7907f40704ab6e66e618f7fbcc990d95.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/tacka.png"
-dest_files=[ "res://.import/tacka.png-52f1739255bd9ca896385e933252316a.s3tc.stex", "res://.import/tacka.png-52f1739255bd9ca896385e933252316a.etc2.stex" ]
+source_file="res://assets/tacka.png"
+dest_files=[ "res://.import/tacka.png-7907f40704ab6e66e618f7fbcc990d95.s3tc.stex", "res://.import/tacka.png-7907f40704ab6e66e618f7fbcc990d95.etc2.stex" ]
 
 [params]
 
