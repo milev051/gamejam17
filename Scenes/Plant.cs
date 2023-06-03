@@ -5,6 +5,8 @@ public class Plant : Area
 {
 	[Export]
 	public Resource plantStats;
+	[Export]
+	public Resource playerStats;
 
 	public int waterQt;
 	// Declare member variables here. Examples:
@@ -25,12 +27,19 @@ public class Plant : Area
 	{
 		if (body.GetType() == typeof(PlayerSand))
 		{
+			PlayerSand player = (PlayerSand) body;
 			GD.Print("Player watered the plant");
 			if (plantStats is PlantStats stats)
 			{
 				waterQt += 5;
 				stats.waterQt = waterQt;
 				GD.Print($"New waterQt of plant: {waterQt}");
+				
+				player.playerUI.UpdateCollectedWaterBar(-50);
+				if (playerStats is PlayerStats player_stats)
+				{
+					player_stats.waterQt = (int)player.playerUI.collectedWaterBar.Value; 
+				}
 			}
 		}
 	}

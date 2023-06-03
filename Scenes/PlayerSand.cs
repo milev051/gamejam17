@@ -10,14 +10,28 @@ public class PlayerSand : KinematicBody
 	float speed;
 	[Export]
 	float mouseSens;
+	[Export]
+	Resource playerStats;
 	float health;
 	Vector3 moveVector;
 	Camera camera;
+	public Player_UI playerUI;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		playerUI = GetNode<Player_UI>("Player_UI");
+		if (playerStats is PlayerStats stats) 
+		{
+			playerUI.healthBar.Value = stats.health;
+			playerUI.oxygenBar.Value = stats.oxygenLvl;
+			playerUI.collectedWaterBar.Value = stats.waterQt;
+			
+			GD.Print($"Water: {playerUI.collectedWaterBar.Value}");
+			GD.Print($"HP: {playerUI.healthBar.Value}");
+			GD.Print($"Oxygen: {playerUI.oxygenBar.Value}");
+		}
+		GD.Print("PLAYER_UI FOUND");
 		camera = GetNode<Camera>("Camera");
-		health = 100.0f;
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 	}
 
