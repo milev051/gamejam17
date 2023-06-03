@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class PlayerDepth : KinematicBody
+public class PlayerSand : KinematicBody
 {
 	// Declare member variables here. Examples:
 	// private int a = 2;
@@ -13,38 +13,14 @@ public class PlayerDepth : KinematicBody
 	float health;
 	Vector3 moveVector;
 	Camera camera;
-	Harpoon harpoon;
-	AnimationPlayer animPlayer;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		camera = GetNode<Camera>("Camera");
-		harpoon = camera.GetNode<Harpoon>("Harpoon");
-		animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		health = 100.0f;
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 	}
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD:Scripts/PlayerDepth.cs
-    public override void _Input(InputEvent @event)
-    {
-        if(@event is InputEventMouseMotion mouseMotion)
-        {
-            camera.RotateX(Mathf.Deg2Rad(mouseMotion.Relative.y*mouseSens*-1));
-            camera.RotationDegrees = new Vector3(Mathf.Clamp(camera.RotationDegrees.x, -75.0f, 75.0f), 0.0f, 0.0f);
-            this.RotateY(Mathf.Deg2Rad(mouseMotion.Relative.x*mouseSens*-1));
-        }
-    }
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(float delta)
-    {
-        if(Input.IsActionPressed("ui_cancel"))
-            GetTree().Quit();
-    }
-=======
->>>>>>> cc57a5cf11a56ec3b087b36db0fa4ebbf5f0145b
 	public override void _Input(InputEvent @event)
 	{
 		if(@event is InputEventMouseMotion mouseMotion)
@@ -60,10 +36,6 @@ public class PlayerDepth : KinematicBody
 		if(Input.IsActionPressed("ui_cancel"))
 			GetTree().Quit();
 	}
-<<<<<<< HEAD
-=======
->>>>>>> d15d438752879afee71e905a136dbf49b1cc1b76:scenes/PlayerDepth.cs
->>>>>>> cc57a5cf11a56ec3b087b36db0fa4ebbf5f0145b
 
 	public override void _PhysicsProcess(float delta)
 	{
@@ -88,19 +60,6 @@ public class PlayerDepth : KinematicBody
 			moveVector -= camera.GlobalTransform.basis.y;
 		moveVector.Normalized();
 
-		if(Input.IsActionPressed("ui_accept") && harpoon.canShoot)
-		{
-			harpoon.shoot();
-		}
-
 		MoveAndSlide(moveVector*speed);
-	}
-
-	public void damage(float damage)
-	{
-		health -= damage;
-		animPlayer.Play("damage");
-		if(health < 0.0f)
-			GetTree().ReloadCurrentScene();
 	}
 }

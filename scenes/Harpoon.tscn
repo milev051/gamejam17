@@ -1,6 +1,26 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/harpoon-removebg-preview.png" type="Texture" id=1]
+<<<<<<< HEAD
+
+[sub_resource type="Animation" id=2]
+resource_name = "shoot"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/Control/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+=======
+[ext_resource path="res://scenes/Harpoon.cs" type="Script" id=2]
+>>>>>>> cc57a5cf11a56ec3b087b36db0fa4ebbf5f0145b
 
 [sub_resource type="Animation" id=2]
 resource_name = "shoot"
@@ -19,6 +39,13 @@ tracks/0/keys = {
 }
 
 [node name="Harpoon" type="Spatial"]
+
+[node name="RayCast" type="RayCast" parent="."]
+enabled = true
+cast_to = Vector3( 0, 0, -100 )
+collision_mask = 2
+debug_shape_custom_color = Color( 1, 0, 0, 1 )
+debug_shape_thickness = 5
 
 [node name="RayCast" type="RayCast" parent="."]
 enabled = true
