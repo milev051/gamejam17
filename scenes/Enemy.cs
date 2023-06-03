@@ -8,16 +8,23 @@ public class Enemy : KinematicBody
     // private string b = "text";
     Vector3 moveVector;
     float speed;
-    bool visible1, visible2;
+    float health;
+    bool hit;
     PlayerDepth player;
     Sprite3D sprite;
+    AnimationPlayer animPlayer;
+    Timer timer;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         player = GetParent().GetNode<PlayerDepth>("Player");
         sprite = GetNode<Sprite3D>("Sprite3D");
+        animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+        timer = GetNode<Timer>("Timer");
         speed = 2.0f;
+        health = 10.0f;
         Visible = false;
+        hit = false;
     }
 
     //  // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -51,5 +58,25 @@ public class Enemy : KinematicBody
             PlayerDepth bodyPlayer = (PlayerDepth)body;
             bodyPlayer.damage(10.0f);
         }
+    }
+
+    public void damage()
+    {
+        animPlayer.Play("damage");
+        timer.Start();
+        if(!hit)
+        {
+            health -= 5.0f;
+            hit = true;
+        }
+        speed = 0.0f;
+        if(health <= 0.0)
+            QueueFree();
+    }
+
+    public void _on_Timer_timeout()
+    {
+        speed = 2.0f;
+        hit = false;
     }
 }

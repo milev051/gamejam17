@@ -26,6 +26,6 @@ mouseSens = 0.1
 environment = SubResource( 2 )
 
 [node name="Enemy" parent="." instance=ExtResource( 2 )]
-transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 1, 15.4994, -30.5336, 0 )
+transform = Transform( 6, 0, 0, 0, 6, 0, 0, 0, 1, 15.4994, -30.5336, 0 )
 
 [node name="Spatial" parent="." instance=ExtResource( 3 )]
