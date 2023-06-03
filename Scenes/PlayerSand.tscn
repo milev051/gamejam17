@@ -21,6 +21,8 @@ shape = SubResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0 )
 
 [node name="Player_UI" type="CanvasLayer" parent="."]
+scale = Vector2( 0.3, 0.3 )
+transform = Transform2D( 0.3, 0, 0, 0.3, 0, 0 )
 script = ExtResource( 5 )
 
 [node name="Control" type="Control" parent="Player_UI"]

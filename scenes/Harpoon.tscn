@@ -37,8 +37,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Sprite" type="Sprite" parent="CanvasLayer/Control"]
-position = Vector2( 700, 419.525 )
-scale = Vector2( 1.62, 1.44518 )
+position = Vector2( 280, 153.061 )
+scale = Vector2( 0.593, 0.529007 )
 texture = ExtResource( 1 )
 hframes = 4
 
