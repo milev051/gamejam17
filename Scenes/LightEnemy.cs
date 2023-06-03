@@ -15,6 +15,7 @@ public class LightEnemy : KinematicBody
 	AnimationPlayer animPlayer;
 	Timer timer;
 	Area area;
+	AudioStreamPlayer3D audioPlayer;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -23,6 +24,7 @@ public class LightEnemy : KinematicBody
 		animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		timer = GetNode<Timer>("Timer");
 		area = GetNode<Area>("Area");
+		audioPlayer = GetNode<AudioStreamPlayer3D>("AudioStreamPlayer3D");
 		speed = 5.0f;
 		sprite.Visible = false;
 	}
@@ -51,6 +53,7 @@ public class LightEnemy : KinematicBody
 			sprite.Visible = true;
 			speed = 10.0f;
 			timer.Start();
+			audioPlayer.Play();
 			area.SetDeferred("monitoring", false);
 		}
 	}
@@ -59,6 +62,7 @@ public class LightEnemy : KinematicBody
 	{
 		speed = 5.0f;
 		sprite.Visible = false;
+		audioPlayer.Stop();
 		area.SetDeferred("monitoring", true);
 	}
 }

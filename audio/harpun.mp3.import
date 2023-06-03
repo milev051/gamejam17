@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/harpun.mp3-57eff9da8df38591bf842008cd09f74f.mp3str"
+
+[deps]
+
+source_file="res://audio/harpun.mp3"
+dest_files=[ "res://.import/harpun.mp3-57eff9da8df38591bf842008cd09f74f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

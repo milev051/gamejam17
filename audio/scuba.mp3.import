@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/scuba.mp3-01493dda99abe44bb12f72bb901cf60a.mp3str"
+
+[deps]
+
+source_file="res://audio/scuba.mp3"
+dest_files=[ "res://.import/scuba.mp3-01493dda99abe44bb12f72bb901cf60a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/pesak.mp3-d2c596f9d447363bdf4f6dbbaa359406.mp3str"
+
+[deps]
+
+source_file="res://audio/pesak.mp3"
+dest_files=[ "res://.import/pesak.mp3-d2c596f9d447363bdf4f6dbbaa359406.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

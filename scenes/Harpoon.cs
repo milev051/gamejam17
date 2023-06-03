@@ -10,6 +10,7 @@ public class Harpoon : Spatial
 	RayCast raycast;
 	Timer timer;
 	AnimationPlayer animPlayer;
+	AudioStreamPlayer audioPlayer;
 	public bool canShoot;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -18,6 +19,7 @@ public class Harpoon : Spatial
 		raycast = GetNode<RayCast>("RayCast");
 		timer = GetNode<Timer>("Timer");
 		animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+		audioPlayer = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
 		canShoot = true;
 	}
 
@@ -32,6 +34,7 @@ public class Harpoon : Spatial
 		canShoot = false;
 		timer.Start();
 		animPlayer.Play("shoot");
+		audioPlayer.Play();
 		if(raycast.IsColliding() && ((Node)raycast.GetCollider()).IsInGroup("enemies"))
 		{
 			Enemy enemy = (Enemy)raycast.GetCollider();

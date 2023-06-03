@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/PlayerDepth.cs" type="Script" id=1]
 [ext_resource path="res://scenes/Harpoon.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Assets/OxygenBar.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/Player_UI.cs" type="Script" id=6]
 [ext_resource path="res://Resources/PlayerStats.tres" type="Resource" id=7]
+[ext_resource path="res://audio/scuba.mp3" type="AudioStream" id=8]
 
 [sub_resource type="CapsuleShape" id=1]
 
@@ -108,5 +109,9 @@ __meta__ = {
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+autoplay = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
