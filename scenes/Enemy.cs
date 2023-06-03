@@ -17,13 +17,13 @@ public class Enemy : KinematicBody
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        player = GetParent().GetNode<PlayerDepth>("Player");
+        player = GetParent().GetParent().GetNode<PlayerDepth>("Player");
         sprite = GetNode<Sprite3D>("Sprite3D");
         animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
         timer = GetNode<Timer>("Timer");
         speed = 2.0f;
         health = 10.0f;
-        Visible = false;
+        Visible = true;
         hit = false;
     }
 
@@ -38,8 +38,6 @@ public class Enemy : KinematicBody
         LookAt(player.Translation, new Vector3(0.0f, 1.0f, 1.0f));
         moveVector = (player.Translation - GlobalTransform.origin).Normalized();
         float distance = moveVector.DistanceTo(player.Translation);
-        if(distance > 20.0f)
-            Visible = false;
         if(distance < 20.0f && distance > 10.0f)
         {
             sprite.Modulate = new Color(1.0f, 1.0f, 1.0f, 0.3f);
@@ -62,21 +60,30 @@ public class Enemy : KinematicBody
 
     public void damage()
     {
-        animPlayer.Play("damage");
-        timer.Start();
         if(!hit)
         {
             health -= 5.0f;
             hit = true;
+            animPlayer.Play("damage");
+            timer.Start();
         }
         speed = 0.0f;
         if(health <= 0.0)
-            QueueFree();
+        {
+            hit = true;
+            animPlayer.Play("death");
+        }
     }
 
     public void _on_Timer_timeout()
     {
         speed = 2.0f;
         hit = false;
+    }
+
+    public void _on_AnimationPlayer_animation_finished(String animName)
+    {
+        if(animName == "death")
+            QueueFree();
     }
 }

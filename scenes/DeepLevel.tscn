@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/PlayerDepth.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/EnemySpawner.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Water.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/GridMap.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Environment" id=2]
 ambient_light_color = Color( 0.337255, 0.815686, 0.839216, 1 )
@@ -37,3 +39,19 @@ __meta__ = {
 "_editor_clip_": 0,
 "_editor_floor_": Vector3( 0, 9, 0 )
 }
+
+[node name="EnemySpawner" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40.0988, 67.646, 4.00122 )
+enemyScene = ExtResource( 5 )
+
+[node name="EnemySpawner2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 61.5607, 52.6252, 0 )
+enemyScene = ExtResource( 5 )
+
+[node name="EnemySpawner3" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 61.5607, 52.6252, 49.8435 )
+enemyScene = ExtResource( 5 )
+
+[node name="EnemySpawner4" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.1642, 52.6252, 49.8435 )
+enemyScene = ExtResource( 5 )
