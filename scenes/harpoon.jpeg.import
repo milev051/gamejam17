@@ -2,24 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-<<<<<<< HEAD
 path="res://.import/harpoon.jpeg-b8493341a2ceb9cb094c17b3d6978e79.stex"
-=======
-path="res://.import/harpoon.jpeg-073451f29164b5e38982c6a7f6bb2a03.stex"
->>>>>>> cc57a5cf11a56ec3b087b36db0fa4ebbf5f0145b
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-<<<<<<< HEAD
 source_file="res://Scenes/harpoon.jpeg"
 dest_files=[ "res://.import/harpoon.jpeg-b8493341a2ceb9cb094c17b3d6978e79.stex" ]
-=======
-source_file="res://scenes/harpoon.jpeg"
-dest_files=[ "res://.import/harpoon.jpeg-073451f29164b5e38982c6a7f6bb2a03.stex" ]
->>>>>>> cc57a5cf11a56ec3b087b36db0fa4ebbf5f0145b
 
 [params]
 

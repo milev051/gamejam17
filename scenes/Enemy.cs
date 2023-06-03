@@ -23,7 +23,7 @@ public class Enemy : KinematicBody
         timer = GetNode<Timer>("Timer");
         speed = 2.0f;
         health = 10.0f;
-        Visible = true;
+        Visible = false;
         hit = false;
     }
 
@@ -38,13 +38,15 @@ public class Enemy : KinematicBody
         LookAt(player.Translation, new Vector3(0.0f, 1.0f, 1.0f));
         moveVector = (player.Translation - GlobalTransform.origin).Normalized();
         float distance = moveVector.DistanceTo(player.Translation);
-        // if(distance < 70.0f && distance > 30.0f)
-        // {
-        //     sprite.Modulate = new Color(1.0f, 1.0f, 1.0f, 0.3f);
-        //     Visible = true;
-        // }
-        // if(distance < 10.0f)
-        //     sprite.Modulate = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+        if(distance > 20.0f)
+            Visible = false;
+        if(distance < 20.0f && distance > 10.0f)
+        {
+            sprite.Modulate = new Color(1.0f, 1.0f, 1.0f, 0.3f);
+            Visible = true;
+        }
+        if(distance < 10.0f)
+            sprite.Modulate = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
         MoveAndSlide(moveVector*speed);
     }

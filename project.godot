@@ -28,7 +28,7 @@ _global_script_class_icons={
 
 config/name="20230603 095434"
 run/main_scene="res://Scenes/SandLevel.tscn"
-config/icon="res://Sprites/icon.png"
+config/icon="res://icon.png"
 
 [gui]
 

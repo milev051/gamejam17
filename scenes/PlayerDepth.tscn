@@ -1,12 +1,7 @@
-<<<<<<< HEAD
-[gd_scene load_steps=6 format=2]
-=======
 [gd_scene load_steps=5 format=2]
->>>>>>> cc57a5cf11a56ec3b087b36db0fa4ebbf5f0145b
 
-[ext_resource path="res://Scripts/PlayerDepth.cs" type="Script" id=1]
+[ext_resource path="res://scenes/PlayerDepth.cs" type="Script" id=1]
 [ext_resource path="res://scenes/Harpoon.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/Harpoon.cs" type="Script" id=3]
 
 [sub_resource type="CapsuleShape" id=1]
 
@@ -35,15 +30,8 @@ shape = SubResource( 1 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.70651, 0 )
-<<<<<<< HEAD
 
 [node name="Harpoon" parent="Camera" instance=ExtResource( 2 )]
-script = ExtResource( 3 )
-=======
-far = 300.0
-
-[node name="Harpoon" parent="Camera" instance=ExtResource( 2 )]
->>>>>>> cc57a5cf11a56ec3b087b36db0fa4ebbf5f0145b
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/damage = SubResource( 3 )
