@@ -29,11 +29,11 @@ public class Plant : Area
 			GD.Print("Player watered the plant");
 			if (plantStats is PlantStats stats)
 			{
-				waterQt += 5;
+				waterQt += 30;
 				stats.waterQt = waterQt;
 				GD.Print($"New waterQt of plant: {waterQt}");
 				
-				player.playerUI.UpdateCollectedWaterBar(-50);
+				player.playerUI.UpdateCollectedWaterBar(-300);
 			}
 		}
 	}
