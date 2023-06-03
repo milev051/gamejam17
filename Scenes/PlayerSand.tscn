@@ -1,6 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/PlayerSand.cs" type="Script" id=1]
+[ext_resource path="res://Assets/HealthBar.png" type="Texture" id=2]
+[ext_resource path="res://Assets/CollectedWaterBar.png" type="Texture" id=3]
+[ext_resource path="res://Assets/OxygenBar.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Player_UI.cs" type="Script" id=5]
 
 [sub_resource type="CapsuleShape" id=1]
 
@@ -13,3 +17,56 @@ shape = SubResource( 1 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0 )
+
+[node name="Player_UI" type="CanvasLayer" parent="."]
+script = ExtResource( 5 )
+
+[node name="Control" type="Control" parent="Player_UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="CollectedWaterBar" type="TextureProgress" parent="Player_UI/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -24.0
+margin_bottom = 400.0
+rect_scale = Vector2( 0.3, 0.3 )
+max_value = 1000.0
+value = 900.0
+texture_progress = ExtResource( 3 )
+fill_mode = 5
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="OxygenBar" type="TextureProgress" parent="Player_UI/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -24.0
+margin_bottom = 400.0
+rect_scale = Vector2( 0.3, 0.3 )
+max_value = 1000.0
+value = 900.0
+texture_progress = ExtResource( 4 )
+fill_mode = 5
+radial_initial_angle = 180.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="HealthBar" type="TextureProgress" parent="Player_UI/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -24.0
+margin_bottom = 400.0
+rect_scale = Vector2( 0.3, 0.3 )
+max_value = 1000.0
+value = 900.0
+texture_progress = ExtResource( 2 )
+fill_mode = 5
+__meta__ = {
+"_edit_use_anchors_": true
+}

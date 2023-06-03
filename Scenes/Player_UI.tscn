@@ -13,6 +13,9 @@ script = ExtResource( 4 )
 [node name="Control" type="Control" parent="Player_UI"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="CollectedWaterBar" type="TextureProgress" parent="Player_UI/Control"]
 anchor_right = 1.0
@@ -24,6 +27,9 @@ max_value = 1000.0
 value = 900.0
 texture_progress = ExtResource( 1 )
 fill_mode = 5
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="OxygenBar" type="TextureProgress" parent="Player_UI/Control"]
 anchor_right = 1.0
@@ -36,6 +42,9 @@ value = 900.0
 texture_progress = ExtResource( 3 )
 fill_mode = 5
 radial_initial_angle = 180.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="HealthBar" type="TextureProgress" parent="Player_UI/Control"]
 anchor_right = 1.0
@@ -47,3 +56,6 @@ max_value = 1000.0
 value = 900.0
 texture_progress = ExtResource( 2 )
 fill_mode = 5
+__meta__ = {
+"_edit_use_anchors_": true
+}
