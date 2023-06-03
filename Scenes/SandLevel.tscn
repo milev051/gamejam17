@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://addons/zylann.hterrain/hterrain.gd" type="Script" id=1]
 [ext_resource path="res://addons/zylann.hterrain/hterrain_texture_set.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Assets/SandLevel_slot0_albedo_bump.packed_tex" type="Texture" id=5]
 [ext_resource path="res://Assets/sky.jpg" type="Texture" id=6]
 [ext_resource path="res://Scenes/PlayerSand.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Plant.tscn" type="PackedScene" id=8]
 
 [sub_resource type="PanoramaSky" id=2]
 panorama = ExtResource( 6 )
@@ -54,3 +55,6 @@ axis_lock_motion_y = true
 move_lock_y = true
 speed = 10.0
 mouseSens = 1.0
+
+[node name="Plant" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 77.9117, 1.4088, 116.383 )

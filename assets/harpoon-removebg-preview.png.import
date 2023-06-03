@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/harpoon-removebg-preview.png-d9c83a8d4f8cbc9f7f35f9e4ad17cce3.stex"
+path="res://.import/harpoon-removebg-preview.png-2b06ac37c485d5a4175a48159d541ad2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/harpoon-removebg-preview.png"
-dest_files=[ "res://.import/harpoon-removebg-preview.png-d9c83a8d4f8cbc9f7f35f9e4ad17cce3.stex" ]
+source_file="res://Assets/harpoon-removebg-preview.png"
+dest_files=[ "res://.import/harpoon-removebg-preview.png-2b06ac37c485d5a4175a48159d541ad2.stex" ]
 
 [params]
 
