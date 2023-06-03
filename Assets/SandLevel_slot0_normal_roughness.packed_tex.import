@@ -1,0 +1,19 @@
+[remap]
+
+importer="hterrain_packed_texture_importer"
+type="StreamTexture"
+path.s3tc="res://.import/SandLevel_slot0_normal_roughness.packed_tex-fe99de0fc3e5afd2249d271a6682ce1a.s3tc.stex"
+path.etc2="res://.import/SandLevel_slot0_normal_roughness.packed_tex-fe99de0fc3e5afd2249d271a6682ce1a.etc2.stex"
+
+[deps]
+
+source_file="res://Assets/SandLevel_slot0_normal_roughness.packed_tex"
+dest_files=[ "res://.import/SandLevel_slot0_normal_roughness.packed_tex-fe99de0fc3e5afd2249d271a6682ce1a.s3tc.stex", "res://.import/SandLevel_slot0_normal_roughness.packed_tex-fe99de0fc3e5afd2249d271a6682ce1a.etc2.stex" ]
+
+[params]
+
+compress/mode=2
+flags/repeat=1
+flags/filter=true
+flags/mipmaps=true
+flags/anisotropic=false
