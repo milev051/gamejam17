@@ -14,6 +14,7 @@ public class LightEnemy : KinematicBody
 	Sprite3D sprite;
 	AnimationPlayer animPlayer;
 	Timer timer;
+	Area area;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -21,10 +22,9 @@ public class LightEnemy : KinematicBody
 		sprite = GetNode<Sprite3D>("Sprite3D");
 		animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		timer = GetNode<Timer>("Timer");
-		speed = 2.0f;
-		health = 10.0f;
-		Visible = true;
-		hit = false;
+		area = GetNode<Area>("Area");
+		speed = 5.0f;
+		sprite.Visible = false;
 	}
 
 	//  // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -32,20 +32,12 @@ public class LightEnemy : KinematicBody
 	//  {
 	//      
 	//  }
-
 	// JEBITE STE SVI
 	public override void _PhysicsProcess(float delta)
 	{
 		LookAt(player.Translation, new Vector3(0.0f, 1.0f, 1.0f));
 		moveVector = (player.Translation - GlobalTransform.origin).Normalized();
 		float distance = moveVector.DistanceTo(player.Translation);
-		if(distance < 20.0f && distance > 10.0f)
-		{
-			sprite.Modulate = new Color(1.0f, 1.0f, 1.0f, 0.3f);
-			Visible = true;
-		}
-		if(distance < 10.0f)
-			sprite.Modulate = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
 		MoveAndSlide(moveVector*speed);
 	}
@@ -56,35 +48,17 @@ public class LightEnemy : KinematicBody
 		{
 			PlayerDepth bodyPlayer = (PlayerDepth)body;
 			bodyPlayer.damage(10.0f);
-		}
-	}
-
-	public void damage()
-	{
-		if(!hit)
-		{
-			health -= 5.0f;
-			hit = true;
-			animPlayer.Play("damage");
+			sprite.Visible = true;
+			speed = 10.0f;
 			timer.Start();
-		}
-		speed = 0.0f;
-		if(health <= 0.0)
-		{
-			hit = true;
-			animPlayer.Play("death");
+			area.SetDeferred("monitoring", false);
 		}
 	}
 
 	public void _on_Timer_timeout()
 	{
-		speed = 2.0f;
-		hit = false;
-	}
-
-	public void _on_AnimationPlayer_animation_finished(String animName)
-	{
-		if(animName == "death")
-			QueueFree();
+		speed = 5.0f;
+		sprite.Visible = false;
+		area.SetDeferred("monitoring", true);
 	}
 }

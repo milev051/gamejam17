@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/LightEnemy.cs" type="Script" id=1]
+[ext_resource path="res://assets/angler.png" type="Texture" id=2]
+[ext_resource path="res://assets/tacka.png" type="Texture" id=3]
 
 [sub_resource type="SphereShape" id=1]
 
 [sub_resource type="SphereShape" id=2]
+radius = 9.0
 
 [node name="LightEnemy" type="KinematicBody"]
 script = ExtResource( 1 )
@@ -13,6 +16,10 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 1, 0, 0, 0 )
+visible = false
+billboard = 1
+texture = ExtResource( 2 )
 
 [node name="Area" type="Area" parent="."]
 
@@ -24,5 +31,15 @@ shape = SubResource( 2 )
 [node name="Timer" type="Timer" parent="."]
 
 [node name="OmniLight" type="OmniLight" parent="."]
-omni_range = 1.0
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.756284, -0.0269814 )
+light_energy = 20.0
+omni_range = 20.0
 omni_attenuation = 1.86607
+
+[node name="Sprite3D" type="Sprite3D" parent="OmniLight"]
+transform = Transform( 20, 0, 0, 0, 20, 0, 0, 0, 1, 0, 0, -0.426394 )
+billboard = 1
+texture = ExtResource( 3 )
+
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
