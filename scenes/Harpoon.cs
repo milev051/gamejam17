@@ -10,6 +10,7 @@ public class Harpoon : Spatial
 	RayCast raycast;
 	Timer timer;
 	AnimationPlayer animPlayer;
+	PlayerDepth player;
 	public bool canShoot;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -18,6 +19,7 @@ public class Harpoon : Spatial
 		raycast = GetNode<RayCast>("RayCast");
 		timer = GetNode<Timer>("Timer");
 		animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+		player = (PlayerDepth)GetParent().GetParent();
 		canShoot = true;
 	}
 
@@ -35,7 +37,8 @@ public class Harpoon : Spatial
 		if(raycast.IsColliding() && ((Node)raycast.GetCollider()).IsInGroup("enemies"))
 		{
 			Enemy enemy = (Enemy)raycast.GetCollider();
-			enemy.damage();
+			if(enemy.damage())
+				player.playerUI.UpdateCollectedWaterBar(200);
 		}
 	}
 

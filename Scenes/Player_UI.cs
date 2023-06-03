@@ -29,14 +29,14 @@ public class Player_UI : CanvasLayer
         if(healthBar.Value > 0)
             oxygenBar.Value = oxygenBar.Value + 2;
 
-        if (Input.IsActionPressed("ui_up"))
-        {
-            UpdateOxygenBar(10);
-        }
-        if (Input.IsActionPressed("ui_down"))
-        {
-            UpdateOxygenBar(-10);
-        }
+        // if (Input.IsActionPressed("ui_up"))
+        // {
+        //     UpdateOxygenBar(10);
+        // }
+        // if (Input.IsActionPressed("ui_down"))
+        // {
+        //     UpdateOxygenBar(-10);
+        // }
     }
 
     public void UpdateHealthBar(int value)

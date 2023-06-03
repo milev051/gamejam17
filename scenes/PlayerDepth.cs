@@ -15,12 +15,15 @@ public class PlayerDepth : KinematicBody
 	Camera camera;
 	Harpoon harpoon;
 	AnimationPlayer animPlayer;
+	public Player_UI playerUI;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		camera = GetNode<Camera>("Camera");
 		harpoon = camera.GetNode<Harpoon>("Harpoon");
 		animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+		playerUI = (Player_UI)GetNode<Node>("Node2D").GetNode<CanvasLayer>("Player_UI");
+		playerUI.UpdateCollectedWaterBar(-900);
 		health = 100.0f;
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 	}
@@ -75,6 +78,7 @@ public class PlayerDepth : KinematicBody
 	public void damage(float damage)
 	{
 		health -= damage;
+		playerUI.UpdateHealthBar(-(int)damage);
 		animPlayer.Play("damage");
 		if(health < 0.0f)
 			GetTree().ReloadCurrentScene();

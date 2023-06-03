@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/PlayerDepth.cs" type="Script" id=1]
 [ext_resource path="res://scenes/Harpoon.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Player_UI.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CapsuleShape" id=1]
 
@@ -44,3 +45,8 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.796078, 0.172549, 0.172549, 0.733333 )
+
+[node name="Node2D" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+
+[editable path="Node2D"]

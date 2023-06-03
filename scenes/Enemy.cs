@@ -58,7 +58,7 @@ public class Enemy : KinematicBody
         }
     }
 
-    public void damage()
+    public bool damage()
     {
         if(!hit)
         {
@@ -72,7 +72,9 @@ public class Enemy : KinematicBody
         {
             hit = true;
             animPlayer.Play("death");
+            return true;
         }
+        return false;
     }
 
     public void _on_Timer_timeout()
