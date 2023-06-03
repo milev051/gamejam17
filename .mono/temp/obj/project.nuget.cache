@@ -1,11 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "HbDsLO/t4CBw643tnt/btK59ZVDmN/o/8mA7ZuFnbik6FfsPHdo0SNQpf68/27XK5VDjBuzBc2VbmalCMB0/tA==",
+  "dgSpecHash": "VcABgLFyT4Wil5qM2AX02EafzjyA4uDOH8q1pVtSFhv44fphu0tz7M7gUil1DizJpoM1mut/5S8UbzV4+R9BAQ==",
   "success": true,
-  "projectFilePath": "/home/andrej/Desktop/GodotProjekti/GameJam/GameJam17/20230603 095434.csproj",
-  "expectedPackageFiles": [
-    "/home/andrej/.nuget/packages/microsoft.netframework.referenceassemblies/1.0.2/microsoft.netframework.referenceassemblies.1.0.2.nupkg.sha512",
-    "/home/andrej/.nuget/packages/microsoft.netframework.referenceassemblies.net472/1.0.2/microsoft.netframework.referenceassemblies.net472.1.0.2.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\milev\\Documents\\2023\\202306 Project GameJam17\\GameJam17\\20230603 095434.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex"
+path="res://.import/CollectedWaterBar.png-0b52f35058dbd3a4f692fb247b3c6c9e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icon.png"
-dest_files=[ "res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex" ]
+source_file="res://Sprites/CollectedWaterBar.png"
+dest_files=[ "res://.import/CollectedWaterBar.png-0b52f35058dbd3a4f692fb247b3c6c9e.stex" ]
 
 [params]
 

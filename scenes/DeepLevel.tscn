@@ -12,5 +12,3 @@ mesh = SubResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5134, 0 )
-speed = 20.0
-mouseSens = 0.1

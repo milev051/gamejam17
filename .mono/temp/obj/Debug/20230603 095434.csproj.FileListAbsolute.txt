@@ -16,3 +16,12 @@ C:/Users/vuk/Desktop/GameJam17/.mono/temp/obj/Debug/20230603 095434.pdb
 /home/andrej/Desktop/GodotProjekti/GameJam/GameJam17/.mono/temp/obj/Debug/20230603 095434.csproj.CoreCompileInputs.cache
 /home/andrej/Desktop/GodotProjekti/GameJam/GameJam17/.mono/temp/obj/Debug/20230603 095434.dll
 /home/andrej/Desktop/GodotProjekti/GameJam/GameJam17/.mono/temp/obj/Debug/20230603 095434.pdb
+C:\Users\milev\Documents\2023\202306 Project GameJam17\GameJam17\.mono\temp\obj\Debug\20230603 095434.csproj.AssemblyReference.cache
+C:\Users\milev\Documents\2023\202306 Project GameJam17\GameJam17\.mono\temp\obj\Debug\20230603 095434.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\milev\Documents\2023\202306 Project GameJam17\GameJam17\.mono\temp\obj\Debug\20230603 095434.AssemblyInfoInputs.cache
+C:\Users\milev\Documents\2023\202306 Project GameJam17\GameJam17\.mono\temp\obj\Debug\20230603 095434.AssemblyInfo.cs
+C:\Users\milev\Documents\2023\202306 Project GameJam17\GameJam17\.mono\temp\obj\Debug\20230603 095434.csproj.CoreCompileInputs.cache
+C:\Users\milev\Documents\2023\202306 Project GameJam17\GameJam17\.mono\temp\obj\Debug\20230603 095434.dll
+C:\Users\milev\Documents\2023\202306 Project GameJam17\GameJam17\.mono\temp\obj\Debug\20230603 095434.pdb
+C:\Users\milev\Documents\2023\202306 Project GameJam17\GameJam17\.mono\temp\bin\Debug\20230603 095434.dll
+C:\Users\milev\Documents\2023\202306 Project GameJam17\GameJam17\.mono\temp\bin\Debug\20230603 095434.pdb

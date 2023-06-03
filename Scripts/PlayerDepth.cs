@@ -30,7 +30,7 @@ public class PlayerDepth : KinematicBody
             this.RotateY(Mathf.Deg2Rad(mouseMotion.Relative.x*mouseSens*-1));
         }
     }
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(float delta)
     {
         if(Input.IsActionPressed("ui_cancel"))
