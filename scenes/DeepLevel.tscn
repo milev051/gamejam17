@@ -1,103 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/PlayerDepth.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=2]
-
-[sub_resource type="CubeMesh" id=3]
-size = Vector3( 50, 2, 50 )
-
-[sub_resource type="Shader" id=5]
-code = "shader_type spatial;
-render_mode blend_mix, specular_phong;
-
-uniform float speed : hint_range(-1,1) = 0.0;
-
-//colors
-uniform sampler2D noise1; //add Godot noise here
-uniform sampler2D noise2; //add Godot noise here
-uniform sampler2D normalmap : hint_normal; //add Godot noise here, enable as_normalmap
-uniform vec4 color : hint_color;
-uniform vec4 edge_color : hint_color;
-
-//foam
-uniform float edge_scale = 0.25;
-uniform float near = 0.1;
-uniform float far = 100.0;
-
-//waves
-uniform vec2 wave_strengh = vec2(0.5, 0.25);
-uniform vec2 wave_frequency = vec2(12.0, 12.0);
-uniform vec2 time_factor = vec2(1.0, 2.0);
-
-
-
-float rim(float depth){
-	depth = 2.0 * depth - 1.0;
-	return near * far / (far + depth * (near - far));
-}
-
-
-float waves(vec2 pos, float time){
-	return (wave_strengh.y * sin(pos.y * wave_frequency.y + time * time_factor.y)) + (wave_strengh.x * sin(pos.x * wave_frequency.x + time * time_factor.x));
-}
-
-
-void vertex(){
-	VERTEX.y += waves(VERTEX.xy, TIME);
-}
-
-
-void fragment(){
-	float time = TIME * speed;
-	vec3 n1 = texture(noise1, UV + time).rgb;
-	vec3 n2 = texture(noise2, UV - time * 0.2).rgb;
-	
-	vec2 uv_movement = UV * 4.0;
-	uv_movement += TIME * speed * 4.0;
-	
-	float sum = (n1.r + n2.r) - 1.0;
-	
-	
-	float z_depth = rim(texture(DEPTH_TEXTURE, SCREEN_UV).x);
-	float z_pos = rim(FRAGCOORD.z);
-	float diff = z_depth - z_pos;
-	
-	vec2 displacement = vec2(sum * 0.05);
-	diff += displacement.x * 50.0;
-	
-	
-	vec4 col = mix(edge_color, color, step(edge_scale, diff));
-	
-	vec4 alpha = vec4(1.0);
-	alpha = texture(SCREEN_TEXTURE, SCREEN_UV + displacement);
-	
-	
-	float fin = 0.0;
-	if (sum > 0.0 && sum < 0.4) fin = 0.1;
-	if (sum > 0.4 && sum < 0.8) fin = 0.0;
-	if (sum > 0.8) fin = 1.0;
-	
-	ALBEDO = vec3(fin) + mix(alpha.rgb, col.rgb, color.a);
-	
-	NORMALMAP = texture(normalmap, uv_movement).rgb;
-	ROUGHNESS = 0.1;
-	SPECULAR = 1.0;
-}"
-
-[sub_resource type="ShaderMaterial" id=6]
-shader = SubResource( 5 )
-shader_param/speed = 0.0
-shader_param/color = null
-shader_param/edge_color = null
-shader_param/edge_scale = 0.25
-shader_param/near = 0.1
-shader_param/far = 100.0
-shader_param/wave_strengh = Vector2( 0.5, 0.25 )
-shader_param/wave_frequency = Vector2( 12, 12 )
-shader_param/time_factor = Vector2( 1, 2 )
-
-[sub_resource type="CubeMesh" id=4]
-size = Vector3( 50, 2, 50 )
+[ext_resource path="res://scenes/Water.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Environment" id=2]
 ambient_light_color = Color( 0.121569, 0.239216, 0.152941, 1 )
@@ -112,37 +17,15 @@ fog_height_max = 40.0
 
 [node name="DeepLevel" type="Spatial"]
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
-mesh = SubResource( 3 )
-material/0 = SubResource( 6 )
-
-[node name="MeshInstance6" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -38.4104, 0 )
-mesh = SubResource( 3 )
-
-[node name="MeshInstance2" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -22.4767, 24.2305 )
-mesh = SubResource( 4 )
-
-[node name="MeshInstance3" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -22.4767, -23.9682 )
-mesh = SubResource( 4 )
-
-[node name="MeshInstance4" type="MeshInstance" parent="."]
-transform = Transform( -4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -24.7604, -22.4767, -1.4314 )
-mesh = SubResource( 4 )
-
-[node name="MeshInstance5" type="MeshInstance" parent="."]
-transform = Transform( -4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 23.9191, -22.4767, -2.63365 )
-mesh = SubResource( 4 )
-
 [node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5134, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.77412, 0 )
 speed = 20.0
 mouseSens = 0.1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 2 )
 
-[node name="KinematicBody" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.4994, -24.5915, 0 )
+[node name="Enemy" parent="." instance=ExtResource( 2 )]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 1, 15.4994, -30.5336, 0 )
+
+[node name="Spatial" parent="." instance=ExtResource( 3 )]

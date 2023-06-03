@@ -17,8 +17,7 @@ public class Enemy : KinematicBody
         player = GetParent().GetNode<PlayerDepth>("Player");
         sprite = GetNode<Sprite3D>("Sprite3D");
         speed = 2.0f;
-        visible1 = true;
-        visible2 = true;
+        Visible = false;
     }
 
     //  // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -34,14 +33,23 @@ public class Enemy : KinematicBody
         float distance = moveVector.DistanceTo(player.Translation);
         if(distance > 20.0f)
             Visible = false;
-        else if(distance < 20.0f && distance > 10.0f)
+        if(distance < 20.0f && distance > 10.0f)
         {
-            sprite.Modulate = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+            sprite.Modulate = new Color(1.0f, 1.0f, 1.0f, 0.3f);
             Visible = true;
         }
-        else if(distance < 10.0f)
+        if(distance < 10.0f)
             sprite.Modulate = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
         MoveAndSlide(moveVector*speed);
+    }
+
+    public void _on_Area_body_entered(Node body)
+    {
+        if(body.GetType() == typeof(PlayerDepth))
+        {
+            PlayerDepth bodyPlayer = (PlayerDepth)body;
+            bodyPlayer.damage(10.0f);
+        }
     }
 }

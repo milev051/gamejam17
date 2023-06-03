@@ -10,14 +10,18 @@ public class PlayerDepth : KinematicBody
     float speed;
     [Export]
     float mouseSens;
+    float health;
     Vector3 moveVector;
     Camera camera;
     Harpoon harpoon;
+    AnimationPlayer animPlayer;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         camera = GetNode<Camera>("Camera");
         harpoon = camera.GetNode<Harpoon>("Harpoon");
+        animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+        health = 100.0f;
         Input.MouseMode = Input.MouseModeEnum.Captured;
     }
 
@@ -61,8 +65,18 @@ public class PlayerDepth : KinematicBody
         moveVector.Normalized();
 
         if(Input.IsActionPressed("ui_accept"))
+        {
             harpoon.shoot();
+        }
 
         MoveAndSlide(moveVector*speed);
+    }
+
+    public void damage(float damage)
+    {
+        health -= damage;
+        animPlayer.Play("damage");
+        if(health < 0.0f)
+            GetTree().ReloadCurrentScene();
     }
 }
