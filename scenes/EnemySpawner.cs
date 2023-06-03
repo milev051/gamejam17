@@ -33,7 +33,8 @@ public class EnemySpawner : Spatial
         random = new RandomNumberGenerator();
         enemy = (Enemy)enemyScene.Instance();
         enemy.Scale = new Vector3(8.0f, 8.0f, 0.0f);
-        AddChild(enemy);
+        GetParent().AddChild(enemy);
+        enemy.Translation = this.GlobalTranslation;
         Translation += new Vector3(random.Randf()*20, 0.0f, 0.0f);
         timer.Start();
     }

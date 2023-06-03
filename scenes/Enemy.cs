@@ -17,7 +17,7 @@ public class Enemy : KinematicBody
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        player = GetParent().GetParent().GetNode<PlayerDepth>("Player");
+        player = GetParent().GetNode<PlayerDepth>("Player");
         sprite = GetNode<Sprite3D>("Sprite3D");
         animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
         timer = GetNode<Timer>("Timer");
