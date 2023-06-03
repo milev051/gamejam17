@@ -6,6 +6,12 @@
 [node name="Harpoon" type="Spatial"]
 script = ExtResource( 2 )
 
+[node name="RayCast" type="RayCast" parent="."]
+enabled = true
+cast_to = Vector3( 0, 0, -100 )
+debug_shape_custom_color = Color( 1, 0, 0, 1 )
+debug_shape_thickness = 5
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="CanvasLayer"]
