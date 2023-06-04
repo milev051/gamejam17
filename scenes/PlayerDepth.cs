@@ -109,7 +109,7 @@ public class PlayerDepth : KinematicBody
 
 	public void _on_Timer_timeout()
 	{
-		playerUI.UpdateOxygenBar(-10);
+		playerUI.UpdateOxygenBar(-30);
 		GD.Print(playerUI.oxygenBar.Value);
 		timer.Start();
 	}

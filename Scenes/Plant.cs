@@ -10,13 +10,15 @@ public class Plant : Area
 	// Declare member variables here. Examples:
 	// private int a = 2;
 	// private string b = "text";
-
+	Sprite3D sprite;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		sprite = GetNode<Sprite3D>("Sprite3D");
 		if (plantStats is PlantStats stats)
 		{
 			waterQt = stats.waterQt;
+			sprite.Frame = stats.spriteFrame;
 			GD.Print($"Starting waterQt of plant: {waterQt}");
 		}
 	}
@@ -27,13 +29,23 @@ public class Plant : Area
 		{
 			PlayerSand player = (PlayerSand) body;
 			GD.Print("Player watered the plant");
+			if(waterQt >= 250 && sprite.Frame < 4)
+			{
+				sprite.Frame++;
+				waterQt = 0;
+			}
+
+			if(player.playerUI.collectedWaterBar.Value > 210)
+			{
+				waterQt += 100;
+				player.playerUI.UpdateCollectedWaterBar(-200);
+			}
+
 			if (plantStats is PlantStats stats)
 			{
-				waterQt += 30;
 				stats.waterQt = waterQt;
+				stats.spriteFrame = sprite.Frame;
 				GD.Print($"New waterQt of plant: {waterQt}");
-				
-				player.playerUI.UpdateCollectedWaterBar(-300);
 			}
 		}
 	}
