@@ -22,24 +22,26 @@ public class EnemySpawner : Spatial
         timer.Start();
     }
 
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
+    //  // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(float delta)
     {
-        
+
     }
 
     public void _on_Timer_timeout()
     {
         GD.Print(((DeepLevel)GetParent()).number);
-        if(((DeepLevel)GetParent()).number > 0)
+        if (((DeepLevel)GetParent()).number > 0)
         {
             random = new RandomNumberGenerator();
+            random.Randomize();
             enemy = (Enemy)enemyScene.Instance();
             ((DeepLevel)GetParent()).number -= 1;
-            enemy.Scale = new Vector3(8.0f, 8.0f, 0.0f);
+            enemy.Scale = new Vector3(5.0f, 5.0f, 0.0f);
+            enemy.GetNode<Sprite3D>("Sprite3D").Modulate = new Color(random.Randf(), random.Randf(), random.Randf());
             GetParent().AddChild(enemy);
             enemy.Translation = this.GlobalTranslation;
-            Translation += new Vector3(random.Randf()*20, 0.0f, 0.0f);
+            Translation += new Vector3(random.Randf() * 20, 0.0f, 0.0f);
             timer.Start();
         }
         else
