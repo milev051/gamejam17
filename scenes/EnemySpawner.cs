@@ -30,12 +30,21 @@ public class EnemySpawner : Spatial
 
     public void _on_Timer_timeout()
     {
-        random = new RandomNumberGenerator();
-        enemy = (Enemy)enemyScene.Instance();
-        enemy.Scale = new Vector3(8.0f, 8.0f, 0.0f);
-        GetParent().AddChild(enemy);
-        enemy.Translation = this.GlobalTranslation;
-        Translation += new Vector3(random.Randf()*20, 0.0f, 0.0f);
-        timer.Start();
+        GD.Print(((DeepLevel)GetParent()).number);
+        if(((DeepLevel)GetParent()).number > 0)
+        {
+            random = new RandomNumberGenerator();
+            enemy = (Enemy)enemyScene.Instance();
+            ((DeepLevel)GetParent()).number -= 1;
+            enemy.Scale = new Vector3(8.0f, 8.0f, 0.0f);
+            GetParent().AddChild(enemy);
+            enemy.Translation = this.GlobalTranslation;
+            Translation += new Vector3(random.Randf()*20, 0.0f, 0.0f);
+            timer.Start();
+        }
+        else
+        {
+            timer.Start();
+        }
     }
 }

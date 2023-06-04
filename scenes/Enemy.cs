@@ -15,6 +15,7 @@ public class Enemy : KinematicBody
 	Sprite3D sprite;
 	AnimationPlayer animPlayer;
 	Timer timer;
+	DeepLevel deepLevel;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -22,6 +23,7 @@ public class Enemy : KinematicBody
 		sprite = GetNode<Sprite3D>("Sprite3D");
 		animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		timer = GetNode<Timer>("Timer");
+		deepLevel = (DeepLevel)GetParent();
 		speed = 2.0f;
 		health = 10.0f;
 		Visible = true;
@@ -92,6 +94,7 @@ public class Enemy : KinematicBody
 		{
 			PlayerDepth bodyPlayer = GetParent().GetNode<PlayerDepth>("Player");
 			bodyPlayer.playerUI.UpdateCollectedWaterBar(100);
+			deepLevel.number++;
 			QueueFree();
 		}
 	}

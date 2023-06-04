@@ -1,22 +1,23 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Plant.cs" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://assets/Premium_Trees_Black_Outline.png" type="Texture" id=2]
 [ext_resource path="res://Resources/PlantStats.tres" type="Resource" id=3]
-[ext_resource path="res://Resources/PlayerStats.tres" type="Resource" id=4]
 
 [sub_resource type="CapsuleShape" id=1]
 
 [node name="Plant" type="Area"]
 script = ExtResource( 1 )
 plantStats = ExtResource( 3 )
-playerStats = ExtResource( 4 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0 )
 shape = SubResource( 1 )
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
+billboard = 1
 texture = ExtResource( 2 )
+hframes = 12
+vframes = 2
 
 [connection signal="body_entered" from="." to="." method="_on_Plant_body_entered"]
