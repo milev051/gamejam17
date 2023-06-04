@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/cartoon-slurp-37066.mp3-ed9597a3bf7864948c3fada6bdee198b.mp3str"
+
+[deps]
+
+source_file="res://audio/cartoon-slurp-37066.mp3"
+dest_files=[ "res://.import/cartoon-slurp-37066.mp3-ed9597a3bf7864948c3fada6bdee198b.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

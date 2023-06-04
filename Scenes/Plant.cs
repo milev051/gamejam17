@@ -12,6 +12,7 @@ public class Plant : Area
     // private string b = "text";
     Sprite3D sprite;
 	AnimationPlayer animPlayer;
+	AudioStreamPlayer audioPlayer;
 	WaterWell waterWell;
 	Spatial water;
     // Called when the node enters the scene tree for the first time.
@@ -21,6 +22,7 @@ public class Plant : Area
 		animPlayer = GetParent().GetNode<AnimationPlayer>("AnimationPlayer");
 		waterWell = GetParent().GetNode<WaterWell>("WaterWell");
 		water = GetParent().GetNode<Spatial>("Spatial");
+		audioPlayer = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
 		water.Visible = false;
         if (plantStats is PlantStats stats)
         {
@@ -31,6 +33,7 @@ public class Plant : Area
 		if(sprite.Frame >= 4)
 		{
 			water.Visible = true;
+			sprite.Frame = 2;
 			waterWell.SetDeferred("monitoring", false);
 			animPlayer.Play("ending");
 		}
@@ -41,6 +44,7 @@ public class Plant : Area
     {
         if (body.GetType() == typeof(PlayerSand))
         {
+			audioPlayer.Play();
             PlayerSand player = (PlayerSand)body;
             GD.Print("Player watered the plant");
             if (waterQt >= 250 && sprite.Frame < 4)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Plant.cs" type="Script" id=1]
 [ext_resource path="res://assets/tree_sprite.png" type="Texture" id=2]
 [ext_resource path="res://Resources/PlantStats.tres" type="Resource" id=3]
+[ext_resource path="res://audio/cartoon-slurp-37066.mp3" type="AudioStream" id=4]
 
 [sub_resource type="CapsuleShape" id=1]
 
@@ -19,5 +20,8 @@ transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 1, 0, 2.45927, 0 )
 billboard = 1
 texture = ExtResource( 2 )
 hframes = 5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
 
 [connection signal="body_entered" from="." to="." method="_on_Plant_body_entered"]
