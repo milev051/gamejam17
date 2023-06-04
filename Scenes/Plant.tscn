@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Plant.cs" type="Script" id=1]
-[ext_resource path="res://assets/Premium_Trees_Black_Outline.png" type="Texture" id=2]
+[ext_resource path="res://assets/tree_sprite.png" type="Texture" id=2]
 [ext_resource path="res://Resources/PlantStats.tres" type="Resource" id=3]
 
 [sub_resource type="CapsuleShape" id=1]
@@ -15,9 +15,9 @@ transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0 )
 shape = SubResource( 1 )
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 1, 0, 2.45927, 0 )
 billboard = 1
 texture = ExtResource( 2 )
-hframes = 12
-vframes = 2
+hframes = 5
 
 [connection signal="body_entered" from="." to="." method="_on_Plant_body_entered"]
