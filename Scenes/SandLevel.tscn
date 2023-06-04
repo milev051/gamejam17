@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://addons/zylann.hterrain/hterrain.gd" type="Script" id=1]
 [ext_resource path="res://addons/zylann.hterrain/hterrain_texture_set.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Scenes/PlayerSand.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Plant.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/WaterWell.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/Water.tscn" type="PackedScene" id=10]
 
 [sub_resource type="PanoramaSky" id=2]
 panorama = ExtResource( 6 )
@@ -24,6 +25,80 @@ ambient_light_energy = 1.46
 script = ExtResource( 2 )
 mode = 0
 textures = [ [ ExtResource( 5 ) ], [ ExtResource( 4 ) ] ]
+
+[sub_resource type="Animation" id=4]
+resource_name = "ending"
+length = 35.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Spatial:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/Control/Label:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 8, 14, 20 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ "", "", "A GAME FOR
+OPEN IT GAME JAM
+", "BY:
+VUK AMIDZIC
+MARKO MILANOV
+IVONA PANAJOTOV
+ANDREJ DRMANOVIC
+" ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "transition"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [node name="SandLevel" type="Spatial"]
 
@@ -62,4 +137,44 @@ playerStats = null
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 77.9117, 1.1658, 116.383 )
 
 [node name="WaterWell" parent="." instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 84.1152, 1.64785, 113.029 )
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1, 84.1152, 2.34824, 113.029 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/ending = SubResource( 4 )
+anims/transition = SubResource( 6 )
+
+[node name="Spatial" parent="." instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 45.2605, 0.711395, 61.3467 )
+visible = false
+collision_mask = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -61.0
+margin_top = -24.0
+margin_right = 61.0
+margin_bottom = 24.0
+align = 1
+valign = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = 2.0
+
+[connection signal="animation_finished" from="AnimationPlayer" to="Plant" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="WaterWell" method="_on_AnimationPlayer_animation_finished"]
