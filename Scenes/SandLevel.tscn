@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://addons/zylann.hterrain/hterrain.gd" type="Script" id=1]
 [ext_resource path="res://addons/zylann.hterrain/hterrain_texture_set.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Scenes/Plant.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/WaterWell.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/Water.tscn" type="PackedScene" id=10]
+[ext_resource path="res://audio/melanhonija.wav" type="AudioStream" id=11]
 
 [sub_resource type="PanoramaSky" id=2]
 panorama = ExtResource( 6 )
@@ -174,7 +175,9 @@ align = 1
 valign = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
 volume_db = 2.0
+autoplay = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="Plant" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="WaterWell" method="_on_AnimationPlayer_animation_finished"]
